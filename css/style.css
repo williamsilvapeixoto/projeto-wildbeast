@@ -100,6 +100,22 @@ main > section.conteudo-principal > p.subt{
     text-indent: 0;
 }
 
+main > section > div.dados-lobo{
+    display: inline-block;
+    margin: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+    overflow: hidden;
+    color: #b07dfb;
+    width: 80px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.13);
+}
+
+main > section > div.dados-lobo > p.num-kg, p.num-age{
+    background-image: linear-gradient(to bottom right, #8744ED, #B07DFB);
+    font-size: 4em;
+}
+
 main > section > p{
     padding: 20px;
     line-height: 1.8em;
@@ -164,4 +180,25 @@ main > section.conteudo-principal > div.inf-lobo > p:hover::after{
     width: 110%;
     left: -15px;
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+main > section.ads{
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: repeat(2, 1fr);
+    column-gap: 15px;
+    padding: 20px;
+}
+
+main > section.ads > div{
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+footer{
+    background-image: linear-gradient(to bottom right, #8744ED, #B07DFB);
+    padding: 50px;
+    text-align: center;
+    font-size: 1.2em;
+    color: white;
 }
