@@ -16,13 +16,14 @@
 
 img{
     width: 100%;
-    height: 100;
+    height: 100%;
 }
 
 header{
     background-image: linear-gradient(to bottom right, #8744ED, #B07DFB);
     background-position: top left;
     padding: 30px;
+    display: grid;
 }
 
 header > div.logo{
@@ -43,7 +44,7 @@ header > nav > a{
 }
 
 header > nav > a:hover{
-    background-color: #492978;
+    background-color: #4929788a;
     font-size: 0.9em;
 }
 
@@ -54,6 +55,20 @@ main > nav.sidenav{
     grid-auto-columns: 90px;
     column-gap: 30px;
     overflow-x: scroll;
+}
+
+main > nav.sidenav::-webkit-scrollbar{
+    height: 10px;
+    background-color: #f3f3f3;
+}
+
+main > nav.sidenav::-webkit-scrollbar-thumb{
+    background-color: #d3d3d3;
+    border-radius: 5px;
+}
+
+main > nav.sidenav::-webkit-scrollbar-thumb:hover{
+    background-color: #bdbdbd;
 }
 
 main > nav.sidenav > a{
@@ -82,4 +97,69 @@ main > section.conteudo-principal > p.subt{
     font-size: 0.9em;
     padding: 0 0 20px 20px;
     margin-top: -10px;
+}
+
+main > section > p{
+    padding: 20px;
+    line-height: 1.8em;
+    text-indent: 20px;
+    font-size: 1.1em; 
+    color: rgb(56, 56, 56);
+}
+
+main > section > p.mais-inf{
+    color: #A670F8;
+    font-size: 0.8rem;
+    text-indent: 0px;
+}
+
+main > section.conteudo-principal > div.img{
+    padding: 0 20px;
+}
+
+main > section.conteudo-principal > div.img > img{
+    border-radius: 5px;
+}
+
+main > section.conteudo-principal > div.frase, div.inf-lobo{
+    background-image: linear-gradient(to bottom right, #8742ee , #AF7CFB);
+    background-position: top left;
+    padding: 30px;
+    margin: 0 30px 40px 30px;
+    border-radius: 5px;
+}
+
+main > section.conteudo-principal > div.frase > p{
+    color: white;
+    font-size: 1.3em;
+    line-height: 2em;
+    text-align: center;
+    font-style: italic;
+}
+
+main > section.conteudo-principal > div.inf-lobo > p{
+    color: white;
+    line-height: 3em;
+    font-size: 1.1em;
+    font-weight: lighter;
+    position: relative;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0 10px;
+}
+
+main > section.conteudo-principal > div.inf-lobo > p::after{
+    content: '';
+    height: 1px;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    transition-duration: 0.3s;
+}
+
+main > section.conteudo-principal > div.inf-lobo > p:hover::after{
+    width: 110%;
+    left: -15px;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
 }
