@@ -97,6 +97,7 @@ main > section.conteudo-principal > p.subt{
     font-size: 0.9em;
     padding: 0 0 20px 20px;
     margin-top: -10px;
+    text-indent: 0;
 }
 
 main > section > p{
