@@ -24,12 +24,20 @@ header{
     background-position: top left;
     padding: 30px;
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: center;
+    grid-area: header;
 }
+
 
 header > div.logo{
     width: 200px;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
     cursor: pointer;
+}
+
+header > nav{
+    padding-bottom: 20px;
 }
 
 header > nav > a{
@@ -48,7 +56,7 @@ header > nav > a:hover{
     font-size: 0.9em;
 }
 
-main > nav.sidenav{
+aside.snav > nav.sidenav{
     padding: 30px;
     display: grid;
     grid-auto-flow: column;
@@ -57,21 +65,22 @@ main > nav.sidenav{
     overflow-x: scroll;
 }
 
-main > nav.sidenav::-webkit-scrollbar{
+aside.snav > nav.sidenav::-webkit-scrollbar{
     height: 10px;
     background-color: #f3f3f3;
+    position: relative;
 }
 
-main > nav.sidenav::-webkit-scrollbar-thumb{
+aside.snav > nav.sidenav::-webkit-scrollbar-thumb{
     background-color: #d3d3d3;
     border-radius: 5px;
 }
 
-main > nav.sidenav::-webkit-scrollbar-thumb:hover{
+aside.snav > nav.sidenav::-webkit-scrollbar-thumb:hover{
     background-color: #bdbdbd;
 }
 
-main > nav.sidenav > a{
+aside.snav > nav.sidenav > a{
     background-color: white;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     padding: 15px;
@@ -79,9 +88,14 @@ main > nav.sidenav > a{
     transition-duration: 0.3s;
 }
 
-main > nav.sidenav > a:hover{
+aside.snav > nav.sidenav > a:hover{
     background-color: #B07DFB;
     padding: 10px;
+}
+
+main{
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 main > section.conteudo-principal > h1{
@@ -101,19 +115,49 @@ main > section.conteudo-principal > p.subt{
 }
 
 main > section > div.dados-lobo{
+    width: 90px;
     display: inline-block;
     margin: 10px 20px;
-    text-align: center;
     border-radius: 5px;
     overflow: hidden;
-    color: #b07dfb;
-    width: 80px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.13);
+    text-align: center;
+    font-style: oblique;
 }
 
 main > section > div.dados-lobo > p.num-kg, p.num-age{
     background-image: linear-gradient(to bottom right, #8744ED, #B07DFB);
     font-size: 4em;
+    color: #b07dfb;
+    font-style: normal;
+}
+
+main > section > section.grid-cnt{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    align-items: end;
+}
+
+p.p{
+    grid-column: 1/3;
+}
+
+div.img1{
+    grid-row: 2/4;
+}
+
+div.img2{
+    grid-column: 2;
+  
+}
+
+main > section > section > p{
+    padding: 20px;
+    line-height: 1.8em;
+    text-indent: 20px;
+    text-align: justify;
+    font-size: 1.1em; 
+    color: rgb(56, 56, 56);
 }
 
 main > section > p{
@@ -125,17 +169,17 @@ main > section > p{
     color: rgb(56, 56, 56);
 }
 
-main > section > p.mais-inf{
+main > section p.mais-inf{
     color: #A670F8;
     font-size: 0.8rem;
     text-indent: 0px;
 }
 
-main > section.conteudo-principal > div.img{
+main > section.conteudo-principal div.img{
     padding: 0 20px;
 }
 
-main > section.conteudo-principal > div.img > img{
+main > section.conteudo-principal div.img > img{
     border-radius: 5px;
 }
 
@@ -177,12 +221,12 @@ main > section.conteudo-principal > div.inf-lobo > p::after{
 }
 
 main > section.conteudo-principal > div.inf-lobo > p:hover::after{
-    width: 110%;
-    left: -15px;
+    width: 105%;
+    left: -2.5%;
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
 }
 
-main > section.ads{
+aside.advert > section.ads{
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: repeat(2, 1fr);
@@ -190,9 +234,10 @@ main > section.ads{
     padding: 20px;
 }
 
-main > section.ads > div{
+aside.advert > section.ads > div{
     border-radius: 5px;
     overflow: hidden;
+    background-color: black;
 }
 
 footer{
@@ -201,4 +246,64 @@ footer{
     text-align: center;
     font-size: 1.2em;
     color: white;
+    grid-area: footer;
+}
+
+@media (min-width: 677px){
+    header > nav{
+        justify-self: end;
+    }
+}
+
+@media (min-width: 700px){
+    p.mais-inf{
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 717px) and (min-width: 640px){  
+    div.img1{
+        grid-column: 2;
+        grid-row: 1/3;
+        align-self: start;
+    }
+
+    p.p{
+        align-self: start;
+        grid-row: 1/2;
+        grid-column: 1;
+    }
+
+    div.img2{
+        grid-column: 1;
+        grid-row: 2/3;
+    }
+
+    p.mais-inf{
+        grid-column: 2;
+        grid-row: 2/3;
+        align-self: end;
+    }
+}
+
+@media (max-width: 640px){
+    p.p{
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    div.img1{
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    p.mais-inf{
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    div.img2{
+        grid-column: auto;
+        grid-row: auto;
+    }
 }
