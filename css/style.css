@@ -56,31 +56,32 @@ header > nav > a:hover{
     font-size: 0.9em;
 }
 
-aside.snav > nav.sidenav{
+aside.snav{
     padding: 30px;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 90px;
-    column-gap: 30px;
+    gap: 30px;
     overflow-x: scroll;
+    grid-area: sidenav;
 }
 
-aside.snav > nav.sidenav::-webkit-scrollbar{
+aside.snav::-webkit-scrollbar{
     height: 10px;
     background-color: #f3f3f3;
     position: relative;
 }
 
-aside.snav > nav.sidenav::-webkit-scrollbar-thumb{
+aside.snav::-webkit-scrollbar-thumb{
     background-color: #d3d3d3;
     border-radius: 5px;
 }
 
-aside.snav > nav.sidenav::-webkit-scrollbar-thumb:hover{
+aside.snav::-webkit-scrollbar-thumb:hover{
     background-color: #bdbdbd;
 }
 
-aside.snav > nav.sidenav > a{
+aside.snav > a{
     background-color: white;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     padding: 15px;
@@ -88,24 +89,29 @@ aside.snav > nav.sidenav > a{
     transition-duration: 0.3s;
 }
 
-aside.snav > nav.sidenav > a:hover{
+aside.snav > a:hover{
     background-color: #B07DFB;
     padding: 10px;
 }
 
 main{
-    max-width: 900px;
-    margin: 0 auto;
+    grid-area: content;
+    background-color: rgb(250, 250, 250);
 }
 
-main > section.conteudo-principal > h1{
+section.title-inf-dados{
+    display: grid;
+    padding-bottom: 30px;
+}
+
+main > section.conteudo-principal > section.title-inf-dados > div > h1{
     font-size: 3em;
     color: #A670F8;
     padding: 20px 20px 0 20px;
     font-weight: bolder;
 }
 
-main > section.conteudo-principal > p.subt{
+main > section.conteudo-principal > section.title-inf-dados > div > p.subt{
     color: #A670F8;
     font-style: italic;
     font-size: 0.9em;
@@ -114,7 +120,7 @@ main > section.conteudo-principal > p.subt{
     text-indent: 0;
 }
 
-main > section > div.dados-lobo{
+main > section.conteudo-principal > section.title-inf-dados > div > div.dados-lobo{
     width: 90px;
     display: inline-block;
     margin: 10px 20px;
@@ -125,7 +131,7 @@ main > section > div.dados-lobo{
     font-style: oblique;
 }
 
-main > section > div.dados-lobo > p.num-kg, p.num-age{
+main > section.conteudo-principal > section.title-inf-dados > div > div.dados-lobo > p.num-kg, p.num-age{
     background-image: linear-gradient(to bottom right, #8744ED, #B07DFB);
     font-size: 4em;
     color: #b07dfb;
@@ -199,7 +205,7 @@ main > section.conteudo-principal > div.frase > p{
     font-style: italic;
 }
 
-main > section.conteudo-principal > div.inf-lobo > p{
+main > section.conteudo-principal > section.inf-animation > div.inf-lobo > p{
     color: white;
     line-height: 3em;
     font-size: 1.1em;
@@ -209,7 +215,7 @@ main > section.conteudo-principal > div.inf-lobo > p{
     padding: 0 10px;
 }
 
-main > section.conteudo-principal > div.inf-lobo > p::after{
+main > section.conteudo-principal > section.inf-animation > div.inf-lobo > p::after{
     content: '';
     height: 1px;
     width: 100%;
@@ -220,7 +226,7 @@ main > section.conteudo-principal > div.inf-lobo > p::after{
     transition-duration: 0.3s;
 }
 
-main > section.conteudo-principal > div.inf-lobo > p:hover::after{
+main > section.conteudo-principal > section.inf-animation > div.inf-lobo > p:hover::after{
     width: 105%;
     left: -2.5%;
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
@@ -232,6 +238,8 @@ aside.advert > section.ads{
     grid-auto-columns: repeat(2, 1fr);
     column-gap: 15px;
     padding: 20px;
+    max-width: 800px;
+    justify-self: center;
 }
 
 aside.advert > section.ads > div{
@@ -249,6 +257,44 @@ footer{
     grid-area: footer;
 }
 
+@media (min-width: 700px){
+    aside.snav{
+        grid-auto-columns: 110px;
+    }
+}
+
+@media (min-width: 850px){
+    body{
+        display: grid;
+        grid-template-areas: 
+            "header header"
+            "sidenav content"
+            "sidenav advert"
+            "footer footer"
+        ;
+    }
+
+    aside.snav{
+        background-color: #f3f3f3;
+        grid-auto-columns: 100px;
+    }
+
+    aside.snav{
+        grid-auto-flow: row;
+        align-items: start;
+        align-content: start;
+        grid-auto-columns: auto;
+        max-width: 170px;
+    }
+
+    aside.snav > a{
+        transition-duration: 0.3s;
+    }
+
+    aside.advert > section.ads{
+    }
+}
+
 @media (min-width: 677px){
     header > nav{
         justify-self: end;
@@ -258,6 +304,16 @@ footer{
 @media (min-width: 700px){
     p.mais-inf{
         font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 700px){
+    section.title-inf-dados{
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    div.dados{
+        justify-self: end;
     }
 }
 
@@ -305,5 +361,43 @@ footer{
     div.img2{
         grid-column: auto;
         grid-row: auto;
+    }
+}
+
+@media (min-width: 1000px){
+    aside.snav{
+        max-width: 190px;
+    }
+}
+
+@media (min-width: 1150px){
+    body{
+        grid-template-areas: 
+            "header header header"
+            "sidenav content advert"
+            "footer footer footer"
+        ;
+    }
+
+    aside.advert > section.ads{
+        grid-auto-flow: dense;
+        gap: 20px;
+        max-width: 240px;
+    }
+}
+
+@media (min-width: 1200px){
+    section.inf-animation{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        padding: 30px 0;
+    }
+
+    p.inf-p2{
+        grid-column: 2;
+    }
+
+    div.inf-lobo{
+        grid-row: 1/3;
     }
 }
